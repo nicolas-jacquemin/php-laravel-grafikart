@@ -17,3 +17,11 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::prefix('/tasks')->controller(\App\Http\Controllers\TaskController::class)->group(function () {
+   Route::get('/', 'index')->name('index');
+   Route::get('/{task}', 'show')->name('show');
+   Route::post('/', 'store')->name('store');
+   Route::put('/{task}', 'update')->name('update');
+   Route::delete('/{task}', 'destroy')->name('destroy');
+})->name('tasks');

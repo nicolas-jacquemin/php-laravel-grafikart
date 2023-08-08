@@ -11,7 +11,7 @@ use Illuminate\Http\JsonResponse;
 class TaskController extends Controller
 {
     public function index(): Paginator {
-        return Task::paginate(15);
+        return Task::paginate(30);
     }
 
     public function show(Task $task): Task {

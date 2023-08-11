@@ -33,4 +33,6 @@ Route::prefix('/tasks')
 Route::prefix('/auth')->controller(LoginController::class)->group(function () {
     Route::post('/login', 'attemptLogin')->name('login');
     Route::post('/logout', 'logout')->middleware('auth:sanctum')->name('logout');
+    Route::get('/me', [\App\Http\Controllers\MeController::class, 'me'])
+        ->middleware('auth:sanctum')->name('me');
 })->name('auth');
